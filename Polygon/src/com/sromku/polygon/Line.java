@@ -50,7 +50,12 @@ public class Line
         	}
         	float tx = (point.x - _start.x) / (_end.x - _start.x);
         	float ty = (point.y - _start.y) / (_end.y - _start.y);
-        	return (tx == ty) && (tx >= 0) && (tx <= 1);
+        	
+		if ((tx >= 0) && (tx <= 1) && (ty >= 0) && (ty <= 1)) {
+            		return (1 - Math.abs(tx / ty)) < 0.0001;
+        	}
+
+        	return  false;
 	}
 
 	/**
